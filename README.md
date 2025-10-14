@@ -23,6 +23,18 @@
 
 ---
 
+## Automated Profiling
+
+Generate an automated exploratory data analysis report for the raw dataset with [ydata-profiling](https://github.com/ydataai/ydata-profiling):
+
+```bash
+python scripts/generate_cybersecurity_profile.py
+```
+
+The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html`, which can be opened locally in a browser for detailed insights and data quality checks.
+
+---
+
 ## Business Requirements
 - Build an interactive cybersecurity dashboard for monitoring and detecting intrusion patterns.
 - Enable filtering by protocol, IP, and port for in-depth exploration.
