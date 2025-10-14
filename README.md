@@ -1,90 +1,196 @@
-# Project XYZ
+# Project Cyber — Cybersecurity Intrusion Detection
 
-**Project XYZ** is a comprehensive data analysis tool designed to streamline data exploration, analysis, and visualisation. The tool supports multiple data formats and provides an intuitive interface for both novice and expert data scientists.
+**Project Cyber** is a comprehensive data analysis and dashboarding project developed during the **Data Analytics with AI Hackathon: Dashboard Essentials (4 Days)**, organised in collaboration with **Code Institute**. It focuses on cybersecurity intrusion detection — analysing network traffic, identifying malicious patterns, and visualising results through an interactive dashboard using **Python**, **Power BI**, or **Tableau Public**.
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+> This README follows the hackathon template and is pre-filled for the **Cybersecurity Intrusion Detection Dataset**. Replace project-specific details as needed to match your final implementation.
+
+---
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+- **Dataset name / link:** [Cybersecurity Intrusion Detection Dataset](https://www.kaggle.com/datasets/dnkumars/cybersecurity-intrusion-detection-dataset)
+- **Domain:** Network Security & Intrusion Detection
+- **Objective:** Detect malicious traffic patterns in network logs using machine learning.
+- **Schema overview:**
+  - Features describing network flows (e.g., `protocol`, `src_port`, `dst_port`, `packet_count`, etc.)
+  - Target column indicates whether the flow is benign or intrusion.
+- **Size & format:** The file cybersecurity_intrusion_data.csv contains **9,537 **records of network activity with a unique session ID (session_id) and 10 features used for intrusion detection. It includes attributes like packet size, protocol type, login attempts, session duration, encryption type, IP reputation score,failed logins, browser type, unusual time access, and a binary attack detection label (attack_detected).
 
+- **License:** Public dataset (verify Kaggle licence before publishing results).
+
+**Preprocessing:** Stratified sampling to maintain class balance and reduce size. Handle missing values, normalise numeric fields, and encode categorical features.
+
+---
 
 ## Business Requirements
-* Describe your business requirements
+- Build an interactive cybersecurity dashboard for monitoring and detecting intrusion patterns.
+- Enable filtering by protocol, IP, and port for in-depth exploration.
+- Provide trend and frequency analysis of attack types.
+- Display feature importance and model explainability results (SHAP, feature weights).
+- Include export and alerting options for flagged anomalies.
 
+**Constraints:** Ensure performance with large datasets, prioritise high precision (minimise false positives), and preserve user privacy (mask IPs).
 
-## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+---
+
+## Hypothesis and Validation
+1. **Hypothesis 1:** High packet counts and unusual port usage indicate potential intrusions.
+   - *Validate:* Feature importance and SHAP analysis confirm contribution of packet count to classification.
+
+2. **Hypothesis 2:** Intrusions cluster at specific hours or traffic spikes.
+   - *Validate:* Time-series and correlation analysis of intrusion events.
+
+3. **Hypothesis 3:** Certain protocols have higher intrusion risk (e.g., ICMP or TCP).
+   - *Validate:* Compare intrusion rates across protocols using bar charts and chi-square tests.
+
+**Acceptance Criteria:**
+- Precision ≥ 0.90  
+- False Positive Rate ≤ 5%  
+- Model calibration error within 3% tolerance
+
+---
 
 ## Project Plan
-* Outline the high-level steps taken for the analysis.
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
+| Day | Focus | Deliverables |
+|-----|--------|---------------|
+| **Day 1** | Ideation & ETL setup | Dataset selection, cleaning, repo setup |
+| **Day 2** | EDA & Dashboard Prototyping | Visuals, first model run, hypothesis formulation |
+| **Day 3** | Refinement & Documentation | Final visuals, README, presentation draft |
+| **Day 4** | Final Presentation | Submit dashboard, presentation, and documentation |
 
-## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+**Workflow:** ETL → EDA → Modelling → Visualisation → Storytelling → Presentation
 
-## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+**Tools:** Python, Pandas, Scikit-learn, Plotly, SHAP, Power BI / Tableau
 
-## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+---
+
+## Mapping Business Requirements to Visualisations
+| Business Requirement | Visualisation | Rationale |
+|----------------------|----------------|------------|
+| Monitor intrusions over time | Line chart with filters | Detect spikes & temporal anomalies |
+| Analyse protocols & ports | Treemap / stacked bar | Identify most vulnerable connections |
+| Detect unusual flows | Scatter / box plots | Spot outliers and extreme behaviour |
+| Explain model decisions | SHAP summary / waterfall | Transparency & trust in AI outputs |
+| Drill into suspicious traffic | Interactive table | Investigate anomalies by feature |
+
+---
+
+## Analysis Techniques
+- **Data Cleaning:** Imputation, type coercion, duplicate removal
+- **Feature Engineering:** One-hot encoding, scaling, log transforms, aggregation
+- **EDA:** Histograms, correlation heatmaps, pair plots, class imbalance analysis
+- **Modelling:** Logistic Regression, Random Forest, XGBoost
+- **Validation:** Stratified K-fold cross-validation, ROC-AUC & Precision-Recall metrics
+- **Explainability:** SHAP feature attribution and PDP plots
+
+**Generative AI usage:** Ideation for hypotheses, code optimisation, and README drafting, with manual validation and ethical verification.
+
+---
+
+## Ethical Considerations
+- **Data Privacy:** Mask IP addresses and sensitive fields.
+- **Fairness:** Validate that model decisions aren’t biased toward specific data segments.
+- **Transparency:** Document assumptions, model versions, and false positive rates.
+- **Compliance:** Respect dataset licence and ensure no personal or organisational identifiers remain.
+
+---
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+**Pages:**
+1. **Overview:** KPIs, intrusion trends, total alerts.
+2. **Protocol Insights:** Attack frequency by protocol and port.
+3. **Feature Importance:** Model drivers visualised with SHAP.
+4. **Temporal Analysis:** Intrusion frequency by hour/day.
+5. **Flow Explorer:** Interactive filtering of specific records.
+
+**Widgets:** Search, dropdown filters (protocol, IP, port), export buttons, and interactive legends.
+
+**Communication:**
+- Non-technical: plain English summaries, colour-coded insights.
+- Technical: metrics, confusion matrices, feature importance charts.
+
+---
 
 ## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+- Slow filtering on high-cardinality categorical fields (e.g., IPs).
+- Class imbalance in rare intrusion types → unstable thresholds.
+- Limited interactivity with very large datasets.
+
+*Mitigations:* Aggregation, caching, and using stratified sampling.
+
+---
 
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+- **Challenges:** Handling large data, maintaining explainability, improving dashboard responsiveness.
+- **Solutions:** Sampling, incremental learning, pre-computed summaries.
+- **Future Learning:** DAX optimisation, Tableau extensions, streaming ML (Kafka), better SHAP visual integration.
+
+---
 
 ## Deployment
-### Heroku
+### Heroku (if Streamlit/Flask)
+1. Log in to Heroku → Create App
+2. Connect to GitHub → Select repo → Deploy branch
+3. Click **Open App** once deployed
+4. Use `.slugignore` to exclude large non-app files
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+### Power BI / Tableau
+- Publish `.pbix` file or Tableau workbook link.
+- Ensure scheduled refresh and performance optimisation.
 
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+**Demo link:** Add your app/dashboard link here.
 
+**Example Project Structure:**
+```
+📁 project-cyber/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   ├── etl_pipeline.ipynb
+│   └── analysis.ipynb
+│
+├── dashboards/
+│   ├── cyber_dashboard.pbix
+│   └── cyber_tableau.twbx
+│
+├── src/
+│   ├── data_cleaning.py
+│   └── analysis_utils.py
+│
+├── README.md
+└── requirements.txt
+```
+
+---
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+- **pandas / numpy** — ETL and preprocessing
+- **scikit-learn / xgboost** — modelling & evaluation
+- **matplotlib / plotly / seaborn** — visualisation
+- **shap / eli5** — explainability
+- **streamlit / dash** — dashboard development (if web-based)
 
+---
 
-## Credits 
+## Credits
+**Content:**
+- Dataset: [Cybersecurity Intrusion Detection Dataset (Kaggle)](https://www.kaggle.com/datasets/dnkumars/cybersecurity-intrusion-detection-dataset)
+- Tutorials and methods inspired by scikit-learn, SHAP documentation.
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+**Media:**
+- Icons: [Font Awesome](https://fontawesome.com/)
+- Diagrams: Open-source graphics under CC0
 
-### Content 
+---
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+## Acknowledgements
+Thanks to the **Code Institute**, Hackathon organisers, mentors, and teammates for feedback and collaboration.
 
-### Media
+---
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+*End of README — Ready for submission and presentation!*
 
-
-
-## Acknowledgements (optional)
-* Thank the people who provided support through this project.
