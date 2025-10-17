@@ -1,5 +1,33 @@
 # Project Cyber — Cybersecurity Intrusion Detection
 
+## Streamlit Dashboard Quickstart
+
+The repository now includes a Streamlit application that recreates the Tableau EDA dashboard (`reports/Cyberv4.pdf`).
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Launch the dashboard
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The app loads the processed dataset from `data/processed/cybersecurity_intrusion_data_eda.csv`. Use the sidebar to pick the
+binary target column (e.g., `attack_detected`), adjust the feature threshold slider, and apply categorical/numeric filters.
+
+### 3. Explore the tabs
+
+- **Overview:** Usage guidance and context for the dataset.
+- **Data:** Scrollable table of the processed dataset with a CSV download button.
+- **EDA:** Tableau-inspired visuals displaying attack metrics by protocol, encryption, browsing behaviour, and session
+  characteristics.
+
+---
+
 **Project Cyber** is a comprehensive data analysis and dashboarding project developed during the **Data Analytics with AI Hackathon: Dashboard Essentials (4 Days)**, organised in collaboration with **Code Institute**. It focuses on cybersecurity intrusion detection — analysing network traffic, identifying malicious patterns, and visualising results through an interactive dashboard using **Python**, **Power BI**, or **Tableau Public**.
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
@@ -141,17 +169,17 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ---
 
 ## Deployment
+
+### Tableau
+- [Tableau Dashboard](https://public.tableau.com/views/Cyberv4_17607073035910/CyberStory?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ### Heroku (if Streamlit/Flask)
 1. Log in to Heroku → Create App
 2. Connect to GitHub → Select repo → Deploy branch
 3. Click **Open App** once deployed
 4. Use `.slugignore` to exclude large non-app files
 
-### Power BI / Tableau
-- Publish `.pbix` file or Tableau workbook link.
-- Ensure scheduled refresh and performance optimisation.
 
-**Demo link:** Add your app/dashboard link here.
 
 **Example Project Structure:**
 ```
@@ -181,9 +209,13 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 
 ## Main Data Analysis Libraries
 - **pandas / numpy** — ETL and preprocessing
-- **scikit-learn / xgboost** — modelling & evaluation
+- **scikit-learn** — modelling & evaluation
 - **matplotlib / plotly / seaborn** — visualisation
 - **shap / eli5** — explainability
+# ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP1.png?raw=true)
+
+# ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP2.png?raw=true)
+
 - **streamlit / dash** — dashboard development (if web-based)
 
 ---
