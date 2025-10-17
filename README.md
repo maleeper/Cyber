@@ -141,17 +141,17 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ---
 
 ## Deployment
+
+### Tableau
+- [Tableau Dashboard](https://public.tableau.com/views/Cyberv4_17607073035910/CyberStory?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ### Heroku (if Streamlit/Flask)
 1. Log in to Heroku → Create App
 2. Connect to GitHub → Select repo → Deploy branch
 3. Click **Open App** once deployed
 4. Use `.slugignore` to exclude large non-app files
 
-### Power BI / Tableau
-- Publish `.pbix` file or Tableau workbook link.
-- Ensure scheduled refresh and performance optimisation.
 
-**Demo link:** Add your app/dashboard link here.
 
 **Example Project Structure:**
 ```
@@ -181,9 +181,13 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 
 ## Main Data Analysis Libraries
 - **pandas / numpy** — ETL and preprocessing
-- **scikit-learn / xgboost** — modelling & evaluation
+- **scikit-learn** — modelling & evaluation
 - **matplotlib / plotly / seaborn** — visualisation
 - **shap / eli5** — explainability
+# ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP1.png?raw=true)
+
+# ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP2.png?raw=true)
+
 - **streamlit / dash** — dashboard development (if web-based)
 
 ---
