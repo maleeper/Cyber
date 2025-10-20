@@ -1,5 +1,71 @@
 # Project Cyber — Cybersecurity Intrusion Detection
 
+## Streamlit Dashboard Quickstart
+
+The repository now includes a Streamlit application that recreates the Tableau EDA dashboard (`reports/Cyberv4.pdf`).
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Launch the dashboard
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The app loads the processed dataset from `data/processed/cybersecurity_intrusion_data_eda.csv`. Use the sidebar to pick the
+binary target column (e.g., `attack_detected`), adjust the feature threshold slider, and apply categorical/numeric filters.
+
+### 3. Explore the tabs
+
+- **Overview:** Usage guidance and context for the dataset.
+- **Data:** Scrollable table of the processed dataset with a CSV download button.
+- **EDA:** Tableau-inspired visuals displaying attack metrics by protocol, encryption, browsing behaviour, and session
+  characteristics.
+
+## Tableau Dashboard
+The Tableau Public version of the dashboard is available [here](https://public.tableau.com/views/Cyber_Hack3/CyberStory?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link). 
+
+## Downloading the presentation
+
+To share the five-slide stakeholder deck (`reports/Cyber_intrusion_story.pptx`) directly from your machine:
+
+1. From the repository root, start a lightweight local web server:
+
+   ```bash
+   python -m http.server 8000
+   ```
+
+2. Open your browser to [http://localhost:8000/reports/Cyber_intrusion_story.pptx](http://localhost:8000/reports/Cyber_intrusion_story.pptx) to download the presentation file.
+
+3. Press `Ctrl+C` in the terminal when you are finished sharing the link.
+
+### Rebuilding the deck without committing binaries
+
+If repository policies prevent you from raising pull requests with binary files, you can
+recreate the deck from the template in code:
+
+1. Install the slide dependency if it is not already available:
+
+   ```bash
+   pip install python-pptx
+   ```
+
+2. Run the helper script to generate `reports/Cyber_intrusion_story.pptx` locally:
+
+   ```bash
+   python scripts/build_presentation.py
+   ```
+
+The script loads `Cyber_pres.pptx`, applies the house styling, and writes the same
+five-slide story used for stakeholder reviews. Share the regenerated file however your
+workflow requires.
+
+---
+
 **Project Cyber** is a comprehensive data analysis and dashboarding project developed during the **Data Analytics with AI Hackathon: Dashboard Essentials (4 Days)**, organised in collaboration with **Code Institute**. It focuses on cybersecurity intrusion detection — analysing network traffic, identifying malicious patterns, and visualising results through an interactive dashboard using **Python**, **Power BI**, or **Tableau Public**.
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
@@ -143,15 +209,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ## Deployment
 
 ### Tableau
-- [Tableau Dashboard](https://public.tableau.com/views/Cyberv4_17607073035910/CyberStory?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-
-### Heroku (if Streamlit/Flask)
-1. Log in to Heroku → Create App
-2. Connect to GitHub → Select repo → Deploy branch
-3. Click **Open App** once deployed
-4. Use `.slugignore` to exclude large non-app files
-
-
+- [Tableau Dashboard](https://public.tableau.com/views/Cyber_Hack3/CyberStory?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 **Example Project Structure:**
 ```
@@ -188,7 +246,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 
 # ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP2.png?raw=true)
 
-- **streamlit / dash** — dashboard development (if web-based)
+- **streamlit / dash** — dashboard development
 
 ---
 
@@ -196,6 +254,8 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 **Content:**
 - Dataset: [Cybersecurity Intrusion Detection Dataset (Kaggle)](https://www.kaggle.com/datasets/dnkumars/cybersecurity-intrusion-detection-dataset)
 - Tutorials and methods inspired by scikit-learn, SHAP documentation.
+- Generative AI such as ChatGPT and Copilot are used for ideation, code snippets and optimisation.
+- Machine learning notebooks adapted from Code Institute course materials.
 
 **Media:**
 - Icons: [Font Awesome](https://fontawesome.com/)
@@ -253,7 +313,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ---
 
 ## Acknowledgements
-Thanks to the **Code Institute**, Hackathon organisers, mentors, and teammates for feedback and collaboration.
+Thanks to Neil and Vasi at **Code Institute** and Hackathon organisers, mentors, and teammates for feedback and collaboration.
 
 ---
 
