@@ -26,6 +26,9 @@ binary target column (e.g., `attack_detected`), adjust the feature threshold sli
 - **EDA:** Tableau-inspired visuals displaying attack metrics by protocol, encryption, browsing behaviour, and session
   characteristics.
 
+## Tableau Dashboard
+The Tableau Public version of the dashboard is available [here](https://public.tableau.com/views/Cyber_Hack3/CyberStory?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link). 
+
 ## Downloading the presentation
 
 To share the five-slide stakeholder deck (`reports/Cyber_intrusion_story.pptx`) directly from your machine:
@@ -206,15 +209,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ## Deployment
 
 ### Tableau
-- [Tableau Dashboard](https://public.tableau.com/views/Cyberv4_17607073035910/CyberStory?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-
-### Heroku (if Streamlit/Flask)
-1. Log in to Heroku → Create App
-2. Connect to GitHub → Select repo → Deploy branch
-3. Click **Open App** once deployed
-4. Use `.slugignore` to exclude large non-app files
-
-
+- [Tableau Dashboard](https://public.tableau.com/views/Cyber_Hack3/CyberStory?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 **Example Project Structure:**
 ```
@@ -251,7 +246,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 
 # ![CI logo](https://github.com/Kaznolan/Cyber/blob/main/reports/SHAP2.png?raw=true)
 
-- **streamlit / dash** — dashboard development (if web-based)
+- **streamlit / dash** — dashboard development
 
 ---
 
