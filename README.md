@@ -255,6 +255,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 - Dataset: [Cybersecurity Intrusion Detection Dataset (Kaggle)](https://www.kaggle.com/datasets/dnkumars/cybersecurity-intrusion-detection-dataset)
 - Tutorials and methods inspired by scikit-learn, SHAP documentation.
 - Generative AI such as ChatGPT and Copilot are used for ideation, code snippets and optimisation.
+- Machine learning notebooks adapted from Code Institute course materials.
 
 **Media:**
 - Icons: [Font Awesome](https://fontawesome.com/)
@@ -263,7 +264,7 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 ---
 
 ## Acknowledgements
-Thanks to the **Code Institute**, Hackathon organisers, mentors, and teammates for feedback and collaboration.
+Thanks to Neil and Vasi at **Code Institute** and Hackathon organisers, mentors, and teammates for feedback and collaboration.
 
 ---
 
