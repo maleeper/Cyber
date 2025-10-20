@@ -1,68 +1,5 @@
 # Project Cyber — Cybersecurity Intrusion Detection
 
-## Streamlit Dashboard Quickstart
-
-The repository now includes a Streamlit application that recreates the Tableau EDA dashboard (`reports/Cyberv4.pdf`).
-
-### 1. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Launch the dashboard
-
-```bash
-streamlit run streamlit_app.py
-```
-
-The app loads the processed dataset from `data/processed/cybersecurity_intrusion_data_eda.csv`. Use the sidebar to pick the
-binary target column (e.g., `attack_detected`), adjust the feature threshold slider, and apply categorical/numeric filters.
-
-### 3. Explore the tabs
-
-- **Overview:** Usage guidance and context for the dataset.
-- **Data:** Scrollable table of the processed dataset with a CSV download button.
-- **EDA:** Tableau-inspired visuals displaying attack metrics by protocol, encryption, browsing behaviour, and session
-  characteristics.
-
-## Downloading the presentation
-
-To share the five-slide stakeholder deck (`reports/Cyber_intrusion_story.pptx`) directly from your machine:
-
-1. From the repository root, start a lightweight local web server:
-
-   ```bash
-   python -m http.server 8000
-   ```
-
-2. Open your browser to [http://localhost:8000/reports/Cyber_intrusion_story.pptx](http://localhost:8000/reports/Cyber_intrusion_story.pptx) to download the presentation file.
-
-3. Press `Ctrl+C` in the terminal when you are finished sharing the link.
-
-### Rebuilding the deck without committing binaries
-
-If repository policies prevent you from raising pull requests with binary files, you can
-recreate the deck from the template in code:
-
-1. Install the slide dependency if it is not already available:
-
-   ```bash
-   pip install python-pptx
-   ```
-
-2. Run the helper script to generate `reports/Cyber_intrusion_story.pptx` locally:
-
-   ```bash
-   python scripts/build_presentation.py
-   ```
-
-The script loads `Cyber_pres.pptx`, applies the house styling, and writes the same
-five-slide story used for stakeholder reviews. Share the regenerated file however your
-workflow requires.
-
----
-
 **Project Cyber** is a comprehensive data analysis and dashboarding project developed during the **Data Analytics with AI Hackathon: Dashboard Essentials (4 Days)**, organised in collaboration with **Code Institute**. It focuses on cybersecurity intrusion detection — analysing network traffic, identifying malicious patterns, and visualising results through an interactive dashboard using **Python**, **Power BI**, or **Tableau Public**.
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
@@ -263,6 +200,55 @@ The script saves an HTML report to `reports/cybersecurity_intrusion_profile.html
 **Media:**
 - Icons: [Font Awesome](https://fontawesome.com/)
 - Diagrams: Open-source graphics under CC0
+
+---
+
+| **Feature Name**          | **Category**              | **Description** |
+|-----------------------------|----------------------------|-----------------|
+| `network_packet_size`       | Network-Based             | Represents the size of network packets (64–1500 bytes). Small packets (~64 bytes) may be control messages; large packets (~1500 bytes) carry bulk data. Abnormally small or large packets can indicate reconnaissance or exploitation. |
+| `protocol_type`             | Network-Based             | Communication protocol used in the session: **TCP** (reliable, common for HTTP/HTTPS/SSH), **UDP** (fast, less reliable, used in VoIP/streaming), or **ICMP** (network diagnostics, often abused in DoS attacks). |
+| `encryption_used`           | Network-Based             | Encryption protocol: **AES** (strong), **DES** (weak, outdated), or **None** (unencrypted). Attackers might avoid encryption or use weak ones to exploit vulnerabilities. |
+| `login_attempts`            | User Behavior-Based       | Number of login attempts. Typical users: 1–3. High values may indicate brute-force attacks with hundreds or thousands of attempts. |
+| `session_duration`          | User Behavior-Based       | Session length in seconds. Very long sessions may indicate unauthorized access or an attacker maintaining persistence. |
+| `failed_logins`             | User Behavior-Based       | Number of failed login attempts. High values suggest credential stuffing or dictionary attacks. A pattern of many failed attempts followed by a success could indicate compromise. |
+| `unusual_time_access`       | User Behavior-Based       | Binary flag (0 or 1) indicating login at an unusual time. Attackers often access systems outside normal business hours to evade detection. |
+| `ip_reputation_score`       | User Behavior-Based       | A score (0–1) representing IP trustworthiness. Higher scores indicate more suspicious activity (e.g., botnets, spam, or prior attacks). |
+| `browser_type`              | User Behavior-Based       | User’s browser (Chrome, Firefox, Edge, Safari, etc.). Unknown browsers could indicate bots or automated scripts. |
+| `attack_detected`           | **Target Variable**       | Binary classification target: **1** = attack detected, **0** = normal activity. |
+
+---
+#  Glossary
+
+| Term | Definition |
+|------|-------------|
+| **AI (Artificial Intelligence)** | The simulation of human intelligence by machines to perform tasks such as learning, reasoning, and decision-making. Used here for intrusion detection and pattern recognition. |
+| **Anomaly Detection** | Identifying unusual patterns in network traffic that may indicate malicious activity. |
+| **Benign** | This means harmless, not malicious, or legitimate.|
+| **Confusion Matrix** | A table summarizing true/false positives and negatives, used to evaluate model performance. |
+| **Data Imputation** | Filling in missing data with estimated or computed values to maintain dataset integrity. |
+| **Dashboard Responsiveness** | How quickly and smoothly a data visualization interface reacts to user input or filtering. |
+| **EDA (Exploratory Data Analysis)** | The process of summarizing and visualizing data to discover structure, trends, and anomalies. |
+| **ETL (Extract, Transform, Load)** | A standard data pipeline process: extracting data, transforming it for analysis, and loading it into storage. |
+| **Feature Engineering** | Creating or modifying input features to improve model accuracy or interpretability. |
+| **Feature Importance** | Quantitative measure of how much each variable contributes to the model’s predictions. |
+| **False Positive** | A benign event incorrectly classified as an attack, leading to false alerts. |
+| **K-Fold Cross-Validation** | A model evaluation method where data is split into *k* parts to train and test multiple times for robustness. |
+| **Machine Learning (ML)** | Algorithms that learn patterns from data to make predictions or classifications. |
+| **Model Explainability** | The ability to understand and communicate how a model arrives at its predictions. |
+| **Normalization** | Scaling numeric data to a consistent range to improve comparability and model stability. |
+| **Precision** | The ratio of true positives to all predicted positives, representing accuracy of detected intrusions. |
+| **ROC-AUC (Receiver Operating Characteristic - Area Under Curve)** | A performance measure for classification models indicating how well they distinguish between classes. |
+| **SHAP (SHapley Additive exPlanations)** | A method to interpret ML model outputs by showing the contribution of each feature to individual predictions. |
+| **Stratified Sampling** | Sampling method that preserves the distribution of target classes in the training data. |
+| **Streamlit / Tableau / Power BI** | Tools for creating interactive dashboards and data visualizations. |
+| **Cyber Threat Intelligence (CTI)** | Knowledge about potential or active cyber threats that supports detection and defense strategies. |
+| **Model Calibration** | Adjusting a model so predicted probabilities better match observed outcomes. |
+| **Explainable AI (XAI)** | Techniques that make complex AI systems interpretable and transparent to users. |
+| **UDP** | User Datagram Protocol. It's a fast, connectionless internet protocol that sends data packets without a prior handshake or guaranteed delivery.|
+| **TP** | This is a true positive meaning the predictions accurately determined it was an attack. |
+| **TN** | This is true negative meaning the predictions accurately determined that it wasn't an attack |
+| **FP** | This is a false positive meaning the predictions falsley determined it was an attack |
+| **FN** | This is true negative meaning the predictions falsley determined that it wasn't an attack, So an attack was missed. |
 
 ---
 
